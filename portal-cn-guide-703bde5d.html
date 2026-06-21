@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料整理 · 懂球帝</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: #f7f9fc;
+            color: #1e2a3d;
+            line-height: 1.7;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0f1a2e 0%, #1b2a44 100%);
+            padding: 72px 24px 64px;
+            text-align: center;
+            color: #e7edf5;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #3b82f6, #7c3aed, #3b82f6);
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+            color: white;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.82;
+            font-weight: 300;
+        }
+
+        /* 导航区（简洁深色） */
+        .nav-bar {
+            background: #0f1a2e;
+            padding: 0 24px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px 32px;
+            border-bottom: 1px solid #2a3a54;
+        }
+
+        .nav-bar a {
+            color: #b3c6e0;
+            text-decoration: none;
+            padding: 14px 0 12px;
+            font-size: 0.95rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-bar a:hover {
+            color: white;
+            border-bottom-color: #3b82f6;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #0f1a2e;
+            margin: 48px 0 24px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #dce3ed;
+            display: inline-block;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        .intro-text {
+            font-size: 1.05rem;
+            background: white;
+            border-radius: 16px;
+            padding: 32px 36px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            margin-bottom: 20px;
+        }
+
+        .intro-text p {
+            margin-bottom: 1em;
+        }
+
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #2563eb;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #1e40af;
+            text-decoration: underline;
+        }
+
+        /* 三个场景模块 — 卡片网格 */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 28px 0 20px;
+        }
+
+        .scene-card {
+            background: white;
+            border-radius: 18px;
+            padding: 28px 24px 32px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+            border: 1px solid #ecf0f6;
+            transition: transform 0.2s, box-shadow 0.25s;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.08);
+            border-color: #cdd9ed;
+        }
+
+        .scene-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 14px;
+            color: #0f1a2e;
+        }
+
+        .scene-card p {
+            color: #2c3e5c;
+            font-size: 0.98rem;
+        }
+
+        .scene-card .tag {
+            display: inline-block;
+            background: #eef4ff;
+            color: #2563eb;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 30px;
+            margin-bottom: 12px;
+        }
+
+        /* 常见说明 */
+        .faq-section {
+            margin-top: 52px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 14px;
+            padding: 20px 28px;
+            margin-bottom: 14px;
+            border: 1px solid #e8edf5;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 500;
+            color: #0f1a2e;
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+        }
+
+        .faq-item p, .faq-item ul {
+            color: #2c3e5c;
+            font-size: 0.97rem;
+        }
+
+        .faq-item ul {
+            list-style: disc;
+            padding-left: 22px;
+            margin-top: 4px;
+        }
+
+        .faq-item ul li {
+            margin-bottom: 4px;
+        }
+
+        .footnote {
+            margin-top: 44px;
+            padding: 20px 0 10px;
+            border-top: 1px solid #dae1ec;
+            font-size: 0.9rem;
+            color: #4a5b78;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .intro-text {
+                padding: 24px 20px;
+            }
+            .container {
+                padding: 32px 16px 60px;
+            }
+            .nav-bar {
+                gap: 6px 18px;
+            }
+            .nav-bar a {
+                font-size: 0.85rem;
+                padding: 10px 0 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>资料索引 · 懂球帝</h1>
+        <p>足球资讯、赛事数据与社区讨论的结构化整理页。信息来自公开内容，持续更新。</p>
+    </header>
+
+    <!-- 顶部导航 -->
+    <nav class="nav-bar">
+        <a href="#intro">内容概览</a>
+        <a href="#scenes">使用场景</a>
+        <a href="#faq">常见说明</a>
+        <a href="https://portal-cn-dongqiudi.com" style="color:white; border-bottom-color: #3b82f6;">懂球帝</a>
+    </nav>
+
+    <!-- 正文区 -->
+    <main class="container">
+
+        <!-- 核心介绍 -->
+        <section id="intro">
+            <h2 class="section-title">整理说明</h2>
+            <div class="intro-text">
+                <p>这个页面围绕 <a href="https://portal-cn-dongqiudi.com">懂球帝</a> 平台，从资料查阅与信息组织的角度整理其内容结构。作为中文足球社区之一，懂球帝覆盖国内外足球新闻、实时比分、转会动态、深度专栏以及俱乐部数据库。以下按常见使用需求归纳为三个模块，方便快速理解平台内容分布。</p>
+                <p>所有描述基于公开信息，不包含未经验证或诱导性内容。建议有具体查询需求时，直接通过平台搜索或分类导航获取最新信息。</p>
+            </div>
+        </section>
+
+        <!-- 三个场景模块 -->
+        <section id="scenes">
+            <h2 class="section-title">场景模块</h2>
+            <div class="scenes-grid">
+                <div class="scene-card">
+                    <span class="tag">赛事追踪</span>
+                    <h3>实时赛况与数据</h3>
+                    <p>覆盖五大联赛、欧冠、亚冠及国内各级联赛。每场比赛提供阵容、实时统计、事件时间线及赛后报告。适合需要快速获取比分和比赛细节的用户。</p>
+                </div>
+                <div class="scene-card">
+                    <span class="tag">资讯归档</span>
+                    <h3>新闻与专栏</h3>
+                    <p>包含球队官宣、转会传闻、赛前分析及战术讨论。文章按联赛、球队、话题标签分类，可通过历史存档查找过往报道，适合做资料回溯。</p>
+                </div>
+                <div class="scene-card">
+                    <span class="tag">社区讨论</span>
+                    <h3>球迷观点与话题</h3>
+                    <p>每场比赛、新闻下均有球迷评论区，另有独立论坛板块。热门话题、深度分析帖、球队专区等内容结构清晰，方便浏览不同立场的信息。</p>
+                </div>
+            </div>
+            <p style="margin-top: 8px; font-size: 0.95rem; color: #3d5670;">以上模块均可在 <a href="https://portal-cn-dongqiudi.com">懂球帝</a> 首页及导航中找到对应入口。</p>
+        </section>
+
+        <!-- 常见说明 (FAQ 摘要) -->
+        <section id="faq" class="faq-section">
+            <h2 class="section-title">常见说明</h2>
+
+            <div class="faq-item">
+                <strong>内容来源与更新</strong>
+                <p>平台内容主要由编辑部、签约作者及用户产生。新闻时效性较强，历史数据（如往年赛季统计）可通过数据板块查询，部分早期内容可能随改版调整入口位置。</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>功能与使用提示</strong>
+                <ul>
+                    <li>注册账号后可关注特定球队、收藏文章或参与讨论。</li>
+                    <li>搜索框支持球队、球员、赛事关键词，也建议直接使用分类筛选。</li>
+                    <li>视频集锦、直播回放等多媒体内容归类在「视频」分区下。</li>
+                    <li>部分深度数据分析表格需要横屏或宽屏设备获得较好浏览体验。</li>
+                </ul>
+            </div>
+
+            <div class="faq-item">
+                <strong>关于本索引页面</strong>
+                <p>本页为资料整理性质，非官方页面。旨在提供一个轻量导航式的内容概览。如需直接使用完整服务，请访问 <a href="https://portal-cn-dongqiudi.com">懂球帝</a>。</p>
+            </div>
+        </section>
+
+        <div class="footnote">
+            <span>整理日期：2025 · 内容基于公开信息 · 仅供资料参考</span>
+        </div>
+
+    </main>
+
+</body>
+</html>
